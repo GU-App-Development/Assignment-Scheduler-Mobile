@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Parking</string>
+    <string name="select">Select</string>
+    <string name="view">View</string>
 </resources>

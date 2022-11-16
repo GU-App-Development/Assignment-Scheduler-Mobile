@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 
-class SpotAdapter(private val spots: List<Spot>) : RecyclerView.Adapter<SpotAdapter.ViewHolder>() {
+class SpotAdapter(private val spots: List<Spot>) : RecyclerView.Adapter<SpotAdapter.ViewHolder>(){
     // Provide a direct reference to each of the views within a data item
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // for any view that will be set as you render a row
@@ -37,4 +38,5 @@ class SpotAdapter(private val spots: List<Spot>) : RecyclerView.Adapter<SpotAdap
     override fun getItemCount(): Int {
         return spots.size
     }
+
 }

@@ -16,7 +16,7 @@ class SpotListActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
 
         //connect to the recycler view
-        val rvSpots = findViewById<View>(R.id.spots) as RecyclerView
+        val rvSpots = findViewById<View>(R.id.recyclerview) as RecyclerView
         //make list of 5
         //TODO populate spots with query data
         spots = Spot.createParkingList(15)

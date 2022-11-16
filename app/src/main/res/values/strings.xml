@@ -2,4 +2,7 @@
     <string name="app_name">Parking</string>
     <string name="select">Select</string>
     <string name="view">View</string>
+    <string name="location_logo">location logo</string>
+    <string name="parking_logo">parking logo</string>
+    <string name="add_location_button">Add location button</string>
 </resources>

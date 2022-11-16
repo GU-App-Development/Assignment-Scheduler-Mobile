@@ -5,16 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    >
+    android:layout_margin="10dp">
 
     <ImageButton
         android:id="@+id/icon"
-        android:layout_width="100dp"
+        android:layout_width="80dp"
         android:layout_height="match_parent"
         android:background="@drawable/parking"
         app:layout_constraintBottom_toTopOf="parent"
         android:layout_margin="10dp"
-        app:layout_constraintRight_toLeftOf="@id/spot_name"/>
+        app:layout_constraintRight_toLeftOf="@id/spot_name"
+        android:contentDescription="@string/parking_logo" />
 
     <TextView
         android:id="@+id/spot_name"

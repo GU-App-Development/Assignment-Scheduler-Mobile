@@ -19,7 +19,7 @@ class SpotListActivity : AppCompatActivity(){
         val rvSpots = findViewById<View>(R.id.recyclerview) as RecyclerView
         //make list of 5
         //TODO populate spots with query data
-        spots = Spot.createParkingList(15)
+        spots = Spot.createParkingList(15) //initializes contacts
         //instantiate adapter and pass in the spots data
         val adapter = SpotAdapter(spots)
         rvSpots.adapter = adapter

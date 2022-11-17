@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+//MAPS_API_KEY=AIzaSyDdE_--6YJRNGlZ8fKwcSqU4JQRJv6o9AU
+
 class MainActivity : AppCompatActivity() {
 //    // on below line we are
 //    // creating variables for listview

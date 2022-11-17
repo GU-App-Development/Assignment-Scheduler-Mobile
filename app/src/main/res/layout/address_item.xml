@@ -25,6 +25,7 @@
         app:layout_constraintLeft_toRightOf="@id/location_image"/>
 
     <TextView
+        android:id="@+id/city_state_zip"
         android:layout_width="200dp"
         android:layout_height="35dp"
         android:layout_margin="10dp"

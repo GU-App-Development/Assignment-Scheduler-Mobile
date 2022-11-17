@@ -1,19 +1,25 @@
 package com.app.parking
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
-    // on below line we are
-    // creating variables for listview
-    private lateinit var locationListView: ListView
+//    // on below line we are
+//    // creating variables for listview
+//    private lateinit var locationListView: ListView
+//
+//    // creating array adapter for listview
+//    lateinit var listAdapter: ArrayAdapter<String>
 
-    // creating array adapter for listview
-    lateinit var listAdapter: ArrayAdapter<String>
+    //an array list of locations to select from based on your query
+    lateinit var locations : ArrayList<LocationAddress>
 
     // creating array list for listview
     lateinit var locationList: ArrayList<String>
@@ -26,24 +32,32 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // initializing variables of list view with their ids.
-        locationListView = findViewById(R.id.location_list_view)
+//        locationListView = findViewById(R.id.location_list_view)
+        val locationAddress = findViewById<View>(R.id.address_recycler) as RecyclerView
         searchView = findViewById(R.id.search_view)
 
-        // initializing list and adding data to list
-        locationList = ArrayList()
-        locationList.add("Spokane")
+//        // initializing list and adding data to list
+//        locationList = ArrayList()
+//        locationList.add("Spokane")
 
-        // initializing list adapter and setting layout
-        // for each list view item and adding array list to it.
-        listAdapter = ArrayAdapter<String>(
-            this,
-            android.R.layout.simple_list_item_1,
-            locationList
-        )
+//        // initializing list adapter and setting layout
+//        // for each list view item and adding array list to it.
+//        listAdapter = ArrayAdapter<String>(
+//            this,
+//            android.R.layout.simple_list_item_1,
+//            locationList
+//        )
 
-        // on below line setting list
-        // adapter to our list view.
-        locationListView.adapter = listAdapter
+//        // on below line setting list
+//        // adapter to our list view.
+//        locationListView.adapter = listAdapter
+
+        //populate data
+
+        //adapter for the locations
+        val adapter = AddressAdapter(locations)
+        locationAddress.adapter = adapter
+        locationAddress.layoutManager = LinearLayoutManager(this)
 
         // on below line we are adding on query
         // listener for our search view.

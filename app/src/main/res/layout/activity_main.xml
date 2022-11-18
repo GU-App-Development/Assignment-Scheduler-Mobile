@@ -6,22 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <SearchView
-        android:id="@+id/search_view"
+    <TextView
+        android:id="@+id/textView"
+        android:text="@string/search_a_location"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:iconifiedByDefault="false"
-        android:padding="4dp"
-        android:queryHint="Search Location" />
+        android:layout_height="70dp"
+        android:textSize="20sp"
+        android:gravity="center"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/address_recycler"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         tools:listitem="@layout/address_item"
         android:layout_marginTop="70dp"/>
 </RelativeLayout>

@@ -3,8 +3,12 @@ package com.app.parking
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 //MAPS_API_KEY=AIzaSyDdE_--6YJRNGlZ8fKwcSqU4JQRJv6o9AU
 
@@ -45,5 +49,17 @@ class MainActivity : AppCompatActivity() {
         val adapter = AddressAdapter(locations)
         rvLocations.adapter = adapter
         rvLocations.layoutManager = LinearLayoutManager(this)
+
+        // adding nav bar for different activities
+        val navView = findViewById<BottomNavigationView>(R.id.nav_view)
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+
+        val navController = navHostFragment.navController
+        val appBarConfig = AppBarConfiguration.Builder(
+            R.id.mainActivity, R.id.spotListActivity).build()
+
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfig)
+        NavigationUI.setupWithNavController(navView, navController)
     }
 }

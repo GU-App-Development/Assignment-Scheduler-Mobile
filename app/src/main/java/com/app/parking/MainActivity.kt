@@ -1,7 +1,10 @@
 package com.app.parking
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -43,9 +46,10 @@ class MainActivity : AppCompatActivity() {
         locations.add(5, LocationAddress("214 N Howard St", "Spokane, WA 99201"))
         locations.add(6, LocationAddress("916 W 2nd Ave", "Spokane, WA 99201"))
 
-        // initializing variables of list view with their ids.
-//        locationListView = findViewById(R.id.location_list_view)
         val rvLocations = findViewById<View>(R.id.address_recycler) as RecyclerView
+        rvLocations.setOnClickListener {
+
+        }
         val adapter = AddressAdapter(locations)
         rvLocations.adapter = adapter
         rvLocations.layoutManager = LinearLayoutManager(this)

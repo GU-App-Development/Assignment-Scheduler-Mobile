@@ -2,10 +2,6 @@ package com.app.parking
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -45,12 +41,9 @@ class MainActivity : AppCompatActivity() {
 
         // initializing variables of list view with their ids.
 //        locationListView = findViewById(R.id.location_list_view)
-        val locationAddress = findViewById<View>(R.id.address_recycler) as RecyclerView
-
-
-        //adapter for the locations
+        val rvLocations = findViewById<View>(R.id.address_recycler) as RecyclerView
         val adapter = AddressAdapter(locations)
-        locationAddress.adapter = adapter
-        locationAddress.layoutManager = LinearLayoutManager(this)
+        rvLocations.adapter = adapter
+        rvLocations.layoutManager = LinearLayoutManager(this)
     }
 }

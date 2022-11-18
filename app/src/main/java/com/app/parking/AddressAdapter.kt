@@ -23,7 +23,7 @@ class AddressAdapter(private val addresses: List<LocationAddress>) : RecyclerVie
 
     //set text within each item view
     override fun onBindViewHolder(viewHolder: AddressAdapter.ViewHolder, position: Int) {
-        val address: LocationAddress = addresses.get(position)
+        val address: LocationAddress = addresses[position]
         val streetAddress = viewHolder.addressNameTV
         streetAddress.text = address.address
         val csz = viewHolder.cszTV

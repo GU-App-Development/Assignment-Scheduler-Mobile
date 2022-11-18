@@ -55,15 +55,15 @@ class MainActivity : AppCompatActivity() {
         rvLocations.layoutManager = LinearLayoutManager(this)
 
         // adding nav bar for different activities
-        val navView = findViewById<BottomNavigationView>(R.id.nav_view)
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-
-        val navController = navHostFragment.navController
-        val appBarConfig = AppBarConfiguration.Builder(
-            R.id.mainActivity, R.id.spotListActivity).build()
-
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfig)
-        NavigationUI.setupWithNavController(navView, navController)
+//        val navView = findViewById<BottomNavigationView>(R.id.nav_view)
+//        val navHostFragment = supportFragmentManager
+//            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+//
+//        val navController = navHostFragment.navController
+//        val appBarConfig = AppBarConfiguration.Builder(
+//            R.id.mainActivity, R.id.spotListActivity).build()
+//
+//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfig)
+//        NavigationUI.setupWithNavController(navView, navController)
     }
 }

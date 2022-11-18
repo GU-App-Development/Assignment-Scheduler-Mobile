@@ -32,7 +32,7 @@
         app:layout_constraintLeft_toRightOf="@id/location_image"
         app:layout_constraintTop_toBottomOf="@id/address"/>
 
-    <ImageButton
+    <Button
         android:id="@+id/add_button"
         android:background="@drawable/add_button"
         android:layout_margin="10dp"

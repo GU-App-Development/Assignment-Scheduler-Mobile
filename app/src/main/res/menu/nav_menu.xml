@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_locations"
-        android:icon="@drawable/location_icon"
-        android:title="@string/locations"/>
+        android:id="@+id/main_page"
+        android:icon="@drawable/class_icon"
+        android:title="Classes"/>
 
     <item
-        android:id="@+id/nav_spots"
-        android:icon="@drawable/parking_icon"
-        android:title="@string/spots"/>
+        android:id="@+id/calendar_page"
+        android:icon="@drawable/calendar_icon"
+        android:title="Calendar"/>
 </menu>

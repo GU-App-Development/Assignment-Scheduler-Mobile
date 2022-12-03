@@ -23,6 +23,8 @@ class ClassesFragment : Fragment() {
         val onClickListener = View.OnClickListener { itemView : View ->
 
         }
+
+        return rootView
     }
 
 }

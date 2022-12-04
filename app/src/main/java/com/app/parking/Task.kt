@@ -1,10 +1,16 @@
 package com.app.parking
 
 import java.time.LocalDate
-import java.util.Date
+
+enum class TASK_TYPE ( var taskName : String){
+    ASSIGNMENT ("Assignment"), QUIZ("Quiz"), EXAM("Exam")
+}
 
 data class Task (
     var name: String = "",
     var dueDate : LocalDate = LocalDate.now(),
-    var notes: String = ""){
+    var taskType: TASK_TYPE = TASK_TYPE.ASSIGNMENT
+    ){
+
+    var notes: String = ""
 }

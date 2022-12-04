@@ -5,14 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.Fragment
 
-class TasksFragment : Frargment(){
+const val ARG_CLASS_ID = "class_id"
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
+class TasksFragment : Fragment(){
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,8 +20,10 @@ class TasksFragment : Frargment(){
         val onClickListener = View.OnClickListener { itemView : View ->
 
         }
-        getView()?.findViewById<Button>(R.id.add_button).setOnClickListener{
+        view?.findViewById<Button>(R.id.class_name)?.setOnClickListener{
 
         }
+
+        return rootView
     }
 }

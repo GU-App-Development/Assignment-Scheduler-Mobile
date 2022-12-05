@@ -2,27 +2,27 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sub_nav_base"
-    app:startDestination="@+id/fragment_tasks">
-    <fragment
-        android:id="@+id/fragment_tasks"
-        android:name="com.app.parking.TasksFragment"
-        android:label="Tasks"
-        tools:layout="@layout/fragment_tasks">
-        <argument
-            android:name="class_id"
-            android:defaultValue="1"
-            app:argType="integer"/>
-    </fragment>
-    <fragment
-        android:id="@+id/fragment_calendar"
-        android:name="com.app.parking.CalendarFragment"
-        android:label="Calendar"
-        tools:layout="@layout/fragment_calendar">
-        <argument
-            android:name="class_id"
-            android:defaultValue="1"
-            app:argType="integer"/>
-    </fragment>
+    android:id="@+id/sub_nav_base">
+<!--    app:startDestination="@+id/fragment_tasks">-->
+<!--    <fragment-->
+<!--        android:id="@+id/fragment_tasks"-->
+<!--        android:name="com.app.parking.TasksFragment"-->
+<!--        android:label="Tasks"-->
+<!--        tools:layout="@layout/fragment_tasks">-->
+<!--        <argument-->
+<!--            android:name="class_id"-->
+<!--            android:defaultValue="1"-->
+<!--            app:argType="integer"/>-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/fragment_calendar"-->
+<!--        android:name="com.app.parking.CalendarFragment"-->
+<!--        android:label="Calendar"-->
+<!--        tools:layout="@layout/fragment_calendar">-->
+<!--        <argument-->
+<!--            android:name="class_id"-->
+<!--            android:defaultValue="1"-->
+<!--            app:argType="integer"/>-->
+<!--    </fragment>-->
 
 </navigation>

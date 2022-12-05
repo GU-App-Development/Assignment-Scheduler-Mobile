@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -31,6 +32,8 @@ class TasksFragment : Fragment(){
     lateinit var newTaskName : EditText
     lateinit var newTaskNotes : EditText
     lateinit var newDueDate : TextView
+    lateinit var taskType : TASK_TYPE
+    lateinit var taskSpinner : Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,10 +46,6 @@ class TasksFragment : Fragment(){
                 userClass = item
             }
         }
-
-        userClass?.taskList?.add(Task("Quiz 1", LocalDate.of(2022, 11, 1), TASK_TYPE.QUIZ))
-        userClass?.taskList?.add(Task("Homework 3", LocalDate.of(2022, 11, 3), TASK_TYPE.ASSIGNMENT))
-        userClass?.taskList?.add(Task("Unit 5 Exam", LocalDate.of(2022, 11, 25), TASK_TYPE.EXAM))
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -64,16 +63,20 @@ class TasksFragment : Fragment(){
         newTaskName = rootView.findViewById(R.id.new_task_name)
         newTaskNotes = rootView.findViewById(R.id.new_task_notes)
         newDueDate = rootView.findViewById(R.id.new_task_due)
+        taskSpinner = rootView.findViewById(R.id.task_spinner)
 
         return rootView
     }
 
     private fun addTaskButtonClick() {
-        TODO("Pick up here!!")
-        if(newTaskNotes != null) {
-            userClass?.taskList?.add(Task(newTaskName.text.toString(), LocalDate.parse(newDueDate.toString(), ????)))
+        taskType = when(taskSpinner.selectedItem.toString()) {
+            "Exam" -> TASK_TYPE.EXAM
+            "Quiz" -> TASK_TYPE.QUIZ
+            else -> TASK_TYPE.ASSIGNMENT
         }
 
+        userClass?.taskList?.add(Task(newTaskName.text.toString(), LocalDate.parse(newDueDate.toString()), taskType))
+        userClass?.taskList?.get(userClass!!.taskList.size - 1)?.notes = newTaskNotes.toString()
     }
 
     /*

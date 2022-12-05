@@ -19,19 +19,22 @@ class ClassesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //initial data population. Would not be here if the app was deployed.
         classesList.add(UserClass("App Dev", 0))
         classesList.add(UserClass("Database Management", 1))
         classesList.add(UserClass("ODE", 2))
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
+        //inflates the view for the fragment
         val rootView = inflater.inflate(R.layout.fragment_classes, container, false)
         val recyclerView : RecyclerView = rootView.findViewById(R.id.class_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         var adapter = ClassAdapter(classesList)
         recyclerView.adapter = adapter
 
+        //listens for add button click and notifies the adapter that the list has been updated.
+        //refreshes the list on update
         rootView.findViewById<Button>(R.id.add_class_button).setOnClickListener {
             val newClassName = rootView.findViewById<EditText>(R.id.add_class).text.toString()
             classesList.add(UserClass(newClassName, classesList.size))
@@ -41,7 +44,7 @@ class ClassesFragment : Fragment() {
         return rootView
     }
 
-
+    //Recycler view adapter. Takes the arraylist and binds the items onto the recycler view to be displayed
     private class ClassAdapter(private val classes: ArrayList<UserClass>) :
         RecyclerView.Adapter<ClassAdapter.MyViewHolder>() {
 

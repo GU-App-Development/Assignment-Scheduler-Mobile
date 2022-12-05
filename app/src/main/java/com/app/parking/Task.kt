@@ -12,5 +12,5 @@ data class Task (
     var taskType: TASK_TYPE = TASK_TYPE.ASSIGNMENT
     ){
 
-    var notes: String = ""
+    var notes: String? = null
 }

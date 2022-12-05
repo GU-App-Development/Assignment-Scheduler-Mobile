@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="address_bg">#e6edfa</color>
+    <color name="exam_color">#fccaca</color>
+    <color name="quiz_color">#faf9b4</color>
+    <color name="assignment_color">#bfffbd</color>
 </resources>

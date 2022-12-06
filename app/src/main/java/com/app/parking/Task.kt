@@ -10,7 +10,7 @@ data class Task (
     var name: String = "",
     var dueDate : LocalDate = LocalDate.now(),
     var taskType: TASK_TYPE = TASK_TYPE.ASSIGNMENT
-    ){
+){
 
     var notes: String? = null
 }

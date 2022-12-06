@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'org.jetbrains.kotlin.android.extensions'
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.app.parking"
-        minSdk 26
+        minSdk 28
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -33,10 +33,6 @@ android {
     }
     buildFeatures {
         viewBinding true
-    }
-
-    androidExtensions {
-        experimental = true
     }
 }
 

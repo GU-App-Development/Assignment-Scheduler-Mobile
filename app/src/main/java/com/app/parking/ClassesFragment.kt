@@ -1,5 +1,6 @@
 package com.app.parking
 
+import android.app.Application.ActivityLifecycleCallbacks
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.time.LocalDate
 
+const val USER_CLASSES = "classesList"
 
 class ClassesFragment : Fragment() {
     var classesList : ArrayList<UserClass> = ArrayList()
@@ -20,14 +22,19 @@ class ClassesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //initial data population. Would not be here if the app was deployed.
-        classesList.add(UserClass("App Dev", 0))
-        classesList.add(UserClass("Database Management", 1))
-        classesList.add(UserClass("ODE", 2))
+//        if (savedInstanceState != null) {
+//            classesList =
+//                savedInstanceState.getParcelableArrayList<UserClass>("classes_list") as ArrayList<UserClass>
+//        }
 
-        classesList[0].taskList.add(Task("Quiz 1", LocalDate.of(2022, 11, 1), TASK_TYPE.QUIZ))
-        classesList[0].taskList.add(Task("Homework 3", LocalDate.of(2022, 11, 3), TASK_TYPE.ASSIGNMENT))
-        classesList[0].taskList.add(Task("Unit 5 Exam", LocalDate.of(2022, 11, 25), TASK_TYPE.EXAM))
+        //initial data population. Would not be here if the app was deployed.
+//        classesList.add(UserClass("App Dev", 0))
+//        classesList.add(UserClass("Database Management", 1))
+//        classesList.add(UserClass("ODE", 2))
+//
+//        classesList[0].taskList.add(Task("Quiz 1", LocalDate.of(2022, 11, 1), TASK_TYPE.QUIZ))
+//        classesList[0].taskList.add(Task("Homework 3", LocalDate.of(2022, 11, 3), TASK_TYPE.ASSIGNMENT))
+//        classesList[0].taskList.add(Task("Unit 5 Exam", LocalDate.of(2022, 11, 25), TASK_TYPE.EXAM))
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -48,6 +55,13 @@ class ClassesFragment : Fragment() {
 
         return rootView
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.putParcelableArrayList(USER_CLASSES, classesList)
+    }
+
 
     //Recycler view adapter. Takes the arraylist and binds the items onto the recycler view to be displayed
     private class ClassAdapter(private val classes: ArrayList<UserClass>) :

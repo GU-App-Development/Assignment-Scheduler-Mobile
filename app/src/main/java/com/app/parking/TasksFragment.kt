@@ -2,8 +2,10 @@ package com.app.parking
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.text.style.BackgroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +20,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Recycler
 import org.w3c.dom.Text
+import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -26,7 +30,7 @@ const val ARG_CLASS_ID = "class_name"
 
 class TasksFragment : Fragment(){
 
-    private var userClass: UserClass? = null
+    private var selectedIndex : Int = 0
     var className = "App Dev"
     var classesList : ArrayList<UserClass> = ArrayList()
     lateinit var newTaskName : EditText
@@ -34,18 +38,30 @@ class TasksFragment : Fragment(){
     lateinit var newDueDate : TextView
     lateinit var taskType : TASK_TYPE
     lateinit var taskSpinner : Spinner
+    lateinit var rvAdapter : TaskAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (savedInstanceState != null) {
+            classesList = savedInstanceState.getParcelableArrayList<UserClass>("classes_list") as ArrayList<UserClass>
+        }
 
         arguments?.let {className = it.getString(ARG_CLASS_ID).toString()}
         arguments?.let { classesList = it.getParcelableArrayList("classes_list")!! }
 
         for(item in classesList) {
             if(item.name == className) {
-                userClass = item
+                selectedIndex = classesList.indexOf(item)
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        val args = Bundle()
+        args.putParcelableArrayList("classes_list" ,classesList)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -53,10 +69,10 @@ class TasksFragment : Fragment(){
         val rootView = inflater.inflate(R.layout.fragment_tasks, container, false)
         val recyclerView : RecyclerView = rootView.findViewById(R.id.tasks_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this.context)
-        if (userClass != null) {
-            var adapter = TaskAdapter(userClass!!.taskList)
-            recyclerView.adapter = adapter
-        }
+
+        var adapter = TaskAdapter(classesList[selectedIndex].taskList)
+        recyclerView.adapter = adapter
+        rvAdapter = adapter
 
         val calendarButton = rootView.findViewById<Button>(R.id.calendar_button).setOnClickListener { calendarButtonClick() }
         val addTaskButton = rootView.findViewById<Button>(R.id.add_new_task).setOnClickListener{ addTaskButtonClick() }
@@ -75,8 +91,27 @@ class TasksFragment : Fragment(){
             else -> TASK_TYPE.ASSIGNMENT
         }
 
-        userClass?.taskList?.add(Task(newTaskName.text.toString(), LocalDate.parse(newDueDate.toString()), taskType))
-        userClass?.taskList?.get(userClass!!.taskList.size - 1)?.notes = newTaskNotes.toString()
+        classesList[selectedIndex].taskList.add(Task(newTaskName.text.toString(), LocalDate.parse(newDueDate.text.toString()) , taskType))
+        classesList[selectedIndex].taskList[classesList[selectedIndex].taskList.size - 1].notes = newTaskNotes.text.toString()
+
+        rvAdapter.notifyItemInserted(classesList[selectedIndex].taskList.size - 1)
+
+        val startTime = newDueDate.text.toString() + "T00:00:00"
+        val endTime = newDueDate.text.toString() + "T01:00:00"
+
+        // Parsing the date and time
+        val SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+        val formattedStartTime = SimpleDateFormat.parse(startTime)
+        val formattedEndTime = SimpleDateFormat.parse(endTime)
+
+        val mIntent = Intent(Intent.ACTION_EDIT)
+        mIntent.type = "vnd.android.cursor.item/event"
+        mIntent.putExtra(CalendarContract.Events.DTSTART, formattedStartTime)
+        mIntent.putExtra("time", true)
+        mIntent.putExtra("rule", "FREQ=YEARLY")
+        mIntent.putExtra(CalendarContract.Events.DTEND, formattedEndTime)
+        mIntent.putExtra(CalendarContract.Events.TITLE, newTaskName.text.toString())
+        startActivity(mIntent)
     }
 
     /*
@@ -92,16 +127,26 @@ class TasksFragment : Fragment(){
         val day = c.get(Calendar.DAY_OF_MONTH)
 
         val datePickerDialog = this.context?.let { DatePickerDialog( it,
-                {view, year, monthOfYear, dayOfMonth ->
-                    newDueDate.text = (year.toString() + "-" + (monthOfYear + 1) + "-" + dayOfMonth)
-                },
-                year, month, day
-            )
+            {view, year, monthOfYear, dayOfMonth ->
+                var month : Int = monthOfYear + 1
+                var monthFormat : String = ""+month
+                var dayFormat : String = ""+dayOfMonth
+                if(month < 10) {
+                    monthFormat = "0"+month
+                }
+                if(dayOfMonth < 10) {
+                    dayFormat = "0"+dayOfMonth
+                }
+
+                newDueDate.text = (year.toString() + "-" + monthFormat + "-" + dayFormat)
+            },
+            year, month, day
+        )
         }
         datePickerDialog?.show()
     }
 
-    private class TaskAdapter(private val tasks : ArrayList<Task>) :
+    class TaskAdapter(private val tasks : ArrayList<Task>) :
         RecyclerView.Adapter<TaskAdapter.MyViewHolder>() {
 
         //place all the fields of the card that you want to variables to in here.
@@ -141,7 +186,7 @@ class TasksFragment : Fragment(){
         }
 
         override fun getItemCount(): Int {
-           return tasks.size
+            return tasks.size
         }
     }
 }

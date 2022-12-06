@@ -8,6 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -17,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
         val navController = navHostFragment.navController
         val appBarConfig = AppBarConfiguration.Builder(navController.graph).build()
-
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfig)
     }
 

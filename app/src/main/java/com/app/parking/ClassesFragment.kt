@@ -28,13 +28,13 @@ class ClassesFragment : Fragment() {
 //        }
 
         //initial data population. Would not be here if the app was deployed.
-//        classesList.add(UserClass("App Dev", 0))
-//        classesList.add(UserClass("Database Management", 1))
-//        classesList.add(UserClass("ODE", 2))
-//
-//        classesList[0].taskList.add(Task("Quiz 1", LocalDate.of(2022, 11, 1), TASK_TYPE.QUIZ))
-//        classesList[0].taskList.add(Task("Homework 3", LocalDate.of(2022, 11, 3), TASK_TYPE.ASSIGNMENT))
-//        classesList[0].taskList.add(Task("Unit 5 Exam", LocalDate.of(2022, 11, 25), TASK_TYPE.EXAM))
+        classesList.add(UserClass("App Dev", 0))
+        classesList.add(UserClass("Database Management", 1))
+        classesList.add(UserClass("ODE", 2))
+
+        classesList[0].taskList.add(Task("Quiz 1", LocalDate.of(2022, 11, 1), TASK_TYPE.QUIZ))
+        classesList[0].taskList.add(Task("Homework 3", LocalDate.of(2022, 11, 3), TASK_TYPE.ASSIGNMENT))
+        classesList[0].taskList.add(Task("Unit 5 Exam", LocalDate.of(2022, 11, 25), TASK_TYPE.EXAM))
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

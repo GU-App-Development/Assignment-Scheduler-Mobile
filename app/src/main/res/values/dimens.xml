@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="task_constraint_layout_height">198dp</dimen>
+    <dimen name="task_constraint_layout_margin">15dp</dimen>
+    <dimen name="task_title_height">40dp</dimen>
+    <dimen name="task_title_text_size">25sp</dimen>
+    <dimen name="enter_task_width">300dp</dimen>
+    <dimen name="enter_task_height">50dp</dimen>
+    <dimen name="enter_task_text_size">20sp</dimen>
+    <dimen name="due_date_width">250dp</dimen>
+    <dimen name="due_date_height">40dp</dimen>
+    <dimen name="due_date_text_size">20sp</dimen>
+    <dimen name="cal_btn_width">50dp</dimen>
+    <dimen name="cal_btn_height">50dp</dimen>
+    <dimen name="notes_width">300dp</dimen>
+    <dimen name="notes_height">50dp</dimen>
+    <dimen name="notes_text_size">20sp</dimen>
+    <dimen name="task_type_width">100dp</dimen>
+    <dimen name="task_type_height">50dp</dimen>
+    <dimen name="tasks_list_height">300dp</dimen>
+    <dimen name="tasks_list_margin">40dp</dimen>
+</resources>

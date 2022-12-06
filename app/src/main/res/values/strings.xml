@@ -2,5 +2,15 @@
     <string name="app_name">Assignment Scheduler</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_class_string">APP DEV</string>
+    <string name="add_class_hint">Enter Class Name</string>
+    <string name="add_btn_text">ADD CLASS</string>
+    <string name="add_task_text">Add a Task</string>
+    <string name="add_task_hint">Task name:</string>
+    <string name="due_date_text">Due date:</string>
+    <string name="add_task_btn">Add task</string>
+    <string name="additional_notes_hint">Additional notes:</string>
+    <string name="task_frag_label">Tasks</string>
+    <string name="classes_frag_label">Classes</string>
 
 </resources>
